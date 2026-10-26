@@ -1,0 +1,532 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Teh Alia 💗</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink: #f18cae;
+            --dark-pink: #c94f7c;
+            --text: #674653;
+            --cream: #fffafc;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(ellipse at 10% 10%, #ffe1ec 0%, transparent 40%),
+                radial-gradient(ellipse at 90% 90%, #f5dfff 0%, transparent 40%),
+                linear-gradient(135deg, #fff8fb, #fff0f6, #fff9fc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 18px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ornamen di sudut halaman */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: 0.5;
+            pointer-events: none;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .orb-one {
+            width: 170px;
+            height: 170px;
+            background: #ffc5da;
+            top: -65px;
+            right: -45px;
+        }
+
+        .orb-two {
+            width: 120px;
+            height: 120px;
+            background: #e9ccff;
+            bottom: -35px;
+            left: -30px;
+            animation-delay: -3s;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 680px;
+            position: relative;
+            z-index: 1;
+            animation: appear 1s ease both;
+        }
+
+        .top-label {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .top-label span {
+            display: inline-block;
+            padding: 9px 18px;
+            border: 1px solid #f6c8d8;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--dark-pink);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.84);
+            border: 1px solid rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 48px 45px;
+            box-shadow:
+                0 25px 80px rgba(190, 105, 143, 0.12),
+                0 5px 20px rgba(190, 105, 143, 0.05);
+            backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #f8b5cb, #d9b7f7, #f8b5cb);
+        }
+
+        .heart-icon {
+            width: 76px;
+            height: 76px;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #ffe3ed, #fff1f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 36px;
+            box-shadow: 0 8px 25px #f6c5d755;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        .eyebrow {
+            text-align: center;
+            font-size: 12px;
+            color: #c77a98;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            margin-bottom: 13px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 6vw, 47px);
+            line-height: 1.2;
+            text-align: center;
+            color: #a84770;
+            margin-bottom: 17px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.9;
+            color: #a48793;
+            margin-bottom: 35px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 30px;
+            color: #e9a2bb;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #f5dce6;
+        }
+
+        .message {
+            background: linear-gradient(135deg, #fff7fa, #fffafd);
+            border: 1px solid #f8e1ea;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .message:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px #d98ba51a;
+        }
+
+        .message-tag {
+            display: inline-block;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #c36c8c;
+            background: #ffe7ef;
+            padding: 6px 11px;
+            border-radius: 7px;
+            margin-bottom: 14px;
+        }
+
+        .message h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 23px;
+            font-style: italic;
+            color: #99506f;
+            margin-bottom: 12px;
+        }
+
+        .message p {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #806875;
+        }
+
+        .quote {
+            border-left: 3px solid #efadc5;
+            padding: 14px 17px;
+            margin-top: 16px;
+            background: #fff0f5;
+            border-radius: 0 12px 12px 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 19px;
+            line-height: 1.65;
+            font-style: italic;
+            color: #ad5277;
+        }
+
+        .highlight {
+            color: #d45d8b;
+            font-weight: 700;
+        }
+
+        .reveal-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .reveal-text {
+            font-size: 13px;
+            color: #a48793;
+            margin-bottom: 16px;
+        }
+
+        .reveal-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #ed8fb1, #d96f9b);
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 22px #df82a844;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .reveal-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px #df82a866;
+        }
+
+        .reveal-button:active {
+            transform: scale(0.97);
+        }
+
+        .final-message {
+            display: none;
+            margin-top: 25px;
+            padding: 27px 22px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #fff0f6, #f9efff);
+            border: 1px solid #f4d5e5;
+        }
+
+        .final-message.show {
+            display: block;
+            animation: appear 0.7s ease both;
+        }
+
+        .final-message .big-heart {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .final-message h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(23px, 5vw, 31px);
+            line-height: 1.45;
+            color: #a53f6c;
+            margin-bottom: 12px;
+        }
+
+        .final-message p {
+            font-size: 13px;
+            color: #a47c8e;
+            line-height: 1.8;
+        }
+
+        .signature {
+            text-align: center;
+            margin-top: 32px;
+            color: #b18c9d;
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        .signature strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 19px;
+            color: #bd7190;
+        }
+
+        .floating-heart {
+            position: fixed;
+            bottom: -30px;
+            pointer-events: none;
+            z-index: 5;
+            animation: rise linear forwards;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-18px); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        @keyframes rise {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+            15% { opacity: 0.8; }
+            100% {
+                opacity: 0;
+                transform: translateY(-110vh) rotate(35deg);
+            }
+        }
+
+        @media (max-width: 520px) {
+            body {
+                padding: 25px 14px;
+            }
+
+            .card {
+                padding: 35px 22px;
+                border-radius: 24px;
+            }
+
+            .heart-icon {
+                width: 65px;
+                height: 65px;
+                font-size: 30px;
+            }
+
+            .message {
+                padding: 20px 17px;
+            }
+
+            .message h2 {
+                font-size: 21px;
+            }
+
+            .quote {
+                font-size: 17px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+
+    <main class="container">
+        <div class="top-label">
+            <span>♡ a little secret ♡</span>
+        </div>
+
+        <section class="card">
+            <div class="heart-icon">💌</div>
+
+            <p class="eyebrow">special message for you</p>
+
+            <h1>Hai, Teh Alia!</h1>
+
+
+            <div class="divider">♥</div>
+
+            <article class="message">
+                <span class="message-tag">01 — listen up!</span>
+
+                <h2>Jadi gini loh, Teh Alia yang baik...</h2>
+
+                <p>
+                    Adekku itu intinya tuh kayak salfok ke kamu,
+                    sambil nunjukkin tangan ke arah kamu
+                </p>
+            </article>
+
+            <article class="message">
+                <span class="message-tag">02 — the confession</span>
+
+                <p>
+                    Terus dia bilang kayak ginii
+                </p>
+
+                <div class="quote">
+                    "Ini mbaknya lucu sama paling cantik,
+                    pakai kacamata." 💗
+                </div>
+            </article>
+
+            <div class="reveal-section">
+                <p class="reveal-text">
+                    Eitss, masih ada satu hal lagi...
+                </p>
+
+                <button
+                    class="reveal-button"
+                    id="revealButton"
+                    onclick="revealMessage()"
+                >
+                    Buka pesan terakhir <span>♡</span>
+                </button>
+
+                <div class="final-message" id="finalMessage">
+                    <div class="big-heart">💗</div>
+
+                    <h2>
+                        UDAHH YAA DONE YAAA!
+                        AKU UDAH KASIH TAUUU TEH ALIA!
+                        INI REAL 😭💕
+                    </h2>
+
+                    <p>
+                        Sekian laporan hari ini.
+                        Semua sudah disampaikan dengan sebenar-benarnya.
+                        Terima kasih sudah membaca sampai akhir! 🎀
+                    </p>
+                </div>
+            </div>
+
+            <footer class="signature">
+                dibuat dengan sedikit keberanian dan banyak drama
+                <strong>♡ sincerely, me ♡</strong>
+            </footer>
+        </section>
+    </main>
+
+    <script>
+        function revealMessage() {
+            const message = document.getElementById("finalMessage");
+            const button = document.getElementById("revealButton");
+
+            if (message.classList.contains("show")) {
+                return;
+            }
+
+            message.classList.add("show");
+            button.innerHTML = "Pesan berhasil dibuka 💌";
+            button.disabled = true;
+            button.style.opacity = "0.75";
+            button.style.cursor = "default";
+
+            // Animasi hati ketika pesan dibuka
+            const hearts = ["💗", "💕", "♡", "💖", "🎀"];
+
+            for (let i = 0; i < 24; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement("span");
+
+                    heart.className = "floating-heart";
+                    heart.textContent =
+                        hearts[Math.floor(Math.random() * hearts.length)];
+
+                    heart.style.left = Math.random() * 100 + "vw";
+                    heart.style.fontSize =
+                        (Math.random() * 17 + 14) + "px";
+                    heart.style.animationDuration =
+                        (Math.random() * 2 + 3) + "s";
+
+                    document.body.appendChild(heart);
+
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 5500);
+                }, i * 100);
+            }
+
+            // Gulir ke pesan terakhir
+            setTimeout(() => {
+                message.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            }, 200);
+        }
+    </script>
+</body>
+</html>
